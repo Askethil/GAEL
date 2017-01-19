@@ -28,7 +28,7 @@
             android:inputType="textPersonName"
             android:textCursorDrawable="@null"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/editText3"
             android:textColorLink="?attr/colorPrimary"
             android:textColorHighlight="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary"
@@ -49,7 +49,7 @@
             android:inputType="textPassword"
             android:textCursorDrawable="@null"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/editText2"
             android:textColorLink="?attr/colorPrimaryDark" />
 
         <Button
