@@ -22,8 +22,17 @@
         </activity>
         <activity
             android:name=".inscription"
-            android:label="inscription" >
+            android:label="Inscription" >
         </activity>
+        <activity
+            android:name=".boutiques"
+            android:label="Boutiques" >
+        </activity>
+        <activity
+            android:name=".ajoutBoutique"
+            android:label="Ajouter boutique" >
+        </activity>
+
     </application>
 
 </manifest>
