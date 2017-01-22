@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void navigatetoHomeActivity(){
-        Intent homeIntent = new Intent(getApplicationContext(),inscription.class);
+        Intent homeIntent = new Intent(getApplicationContext(),boutiques.class);
 
         startActivity(homeIntent);
     }
