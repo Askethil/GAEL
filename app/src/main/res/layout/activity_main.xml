@@ -53,13 +53,11 @@
             android:textColorLink="?attr/colorPrimaryDark" />
 
         <Button
-            android:text="Button"
+            android:text="Valider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="#303f9f"
-            android:id="@+id/button"
-            android:textColorLink="?attr/colorPrimaryDark" />
+            android:id="@+id/button" />
+
 
         <ImageView
             android:id="@+id/imageView1"
@@ -67,6 +65,12 @@
             android:layout_height="150dp"
             android:layout_marginTop="30dp"
             app:srcCompat="@mipmap/logo"/>
+
+        <Button
+            android:text="incription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonInscription" />
     </LinearLayout>
 
 

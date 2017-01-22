@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     // Passwprd Edit View Object
     EditText mdp;
 
-    Button bouton;
+    Button bouton,BtnInscription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginUser();
+            }
+        });
+        BtnInscription= (Button) findViewById(R.id.buttonInscription);
+        BtnInscription.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                navigatetoInscrition();
             }
         });
     }
@@ -89,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject unUtilisateur = jsonArray.getJSONObject(i);
 
                         if (login.equals(unUtilisateur.getString("login")) || mdp.equals(unUtilisateur.getString("mdp"))) {
-                        Toast.makeText(getApplicationContext(), "You are successfully logged in!", Toast.LENGTH_LONG).show();
-                        // Navigate to Home screen
+                            navigatetoHomeActivity();
+
 
                     }
 
@@ -123,7 +131,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void navigatetoHomeActivity(){
+        Intent homeIntent = new Intent(getApplicationContext(),inscription.class);
 
+        startActivity(homeIntent);
+    }
+    public void navigatetoInscrition(){
+        Intent homeIntent = new Intent(getApplicationContext(),inscription.class);
+
+        startActivity(homeIntent);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
