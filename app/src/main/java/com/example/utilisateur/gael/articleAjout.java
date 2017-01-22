@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Utilisateur on 21/01/2017.
@@ -74,9 +76,17 @@ public class articleAjout extends AppCompatActivity {
 
         JSONObject dateObjet= new JSONObject();
         try {
-            dateObjet.put("year", "2016");
-            dateObjet.put("month", "12");
-            dateObjet.put("day", "25");
+
+            Date d=new Date();
+            GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(new Date());
+
+            dateObjet.put("year",Integer.toString(calendar.get(GregorianCalendar.YEAR)));
+
+            dateObjet.put("month",Integer.toString(calendar.get(GregorianCalendar.MONTH)+1));
+            dateObjet.put("day",Integer.toString(calendar.get(GregorianCalendar.DAY_OF_YEAR)));
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -88,7 +98,7 @@ public class articleAjout extends AppCompatActivity {
 
             article.put("datecreation", dateObjet);
 
-            article.put("stock",leStock);
+            article.put("stock", leStock);
             article.put("description", Ladescription);
             article.put("idboutique",Laboutique);
             article.put("urlimage", Limage);
