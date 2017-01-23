@@ -21,11 +21,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import session.SessionManager;
+
 public class MainActivity extends AppCompatActivity {
     // Email Edit View Object
     EditText login;
     // Passwprd Edit View Object
     EditText mdp;
+
+    // Session Manager Class
+    SessionManager session;
 
     Button bouton,BtnInscription;
     @Override
@@ -33,11 +38,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Session Manager
+        session = new SessionManager(getApplicationContext());
+
         // Find Email Edit View control by ID
         login = (EditText)findViewById(R.id.editText3);
         // Find Password Edit View control by ID
         mdp = (EditText)findViewById(R.id.editText2);
         bouton= (Button) findViewById(R.id.button);
+
+
+
+
+
         bouton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -80,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 params.put("", password);
                 // Invoke RESTful Web Service with Http parameters
                 invokeWS(email,password,params);
+
+
     }
 
     public void invokeWS(final String login,final String mdp,RequestParams params){
@@ -97,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject unUtilisateur = jsonArray.getJSONObject(i);
 
                         if (login.equals(unUtilisateur.getString("login")) || mdp.equals(unUtilisateur.getString("mdp"))) {
+
+                            session.createLoginSession(unUtilisateur.getString("login"),unUtilisateur.getString("mdp"),unUtilisateur.getString("id"));
                             navigatetoHomeActivity();
 
 
