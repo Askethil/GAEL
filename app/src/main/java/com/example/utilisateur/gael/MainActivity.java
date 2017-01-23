@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Make RESTful webservice call using AsyncHttpClient object
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://192.168.43.7/rest_api/web/utilisateurs",new AsyncHttpResponseHandler() {
+        client.get("http://gael.uk.to/restapi/web/utilisateurs",new AsyncHttpResponseHandler() {
             // When the response returned by REST has Http response code '200'
             @Override
             public void onSuccess(String response) {
