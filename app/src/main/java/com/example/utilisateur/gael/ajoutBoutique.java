@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.TextView;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,7 +38,6 @@ public class ajoutBoutique extends AppCompatActivity {
         setContentView(R.layout.ajoutboutique);
         lib = (EditText)findViewById(R.id.editTextLibBout);
         description = (EditText)findViewById(R.id.description);
-
         BtnValider= (Button) findViewById(R.id.buttonValiderBoutique);
         BtnValider.setOnClickListener(new View.OnClickListener() {
 
@@ -43,6 +46,13 @@ public class ajoutBoutique extends AppCompatActivity {
                 AjoutBoutique();
             }
         });
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            String maVar = extras.getString("idBout");
+            Toast.makeText(getApplicationContext(), "ZZ"+maVar, Toast.LENGTH_LONG).show();
+
+        }
 
 
     }
@@ -50,29 +60,30 @@ public class ajoutBoutique extends AppCompatActivity {
 
         final String Lelib = lib.getText().toString();
         final String LaDescription = description.getText().toString();
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(new Date());
+
         StringEntity entity;
 
         JSONObject boutique= new JSONObject();
         JSONObject dates= new JSONObject();
         try {
             Date d=new Date();
+            GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(new Date());
 
-            dates.put("year",  Integer.toString(calendar.get(GregorianCalendar.YEAR)));
+            dates.put("year",Integer.toString(calendar.get(GregorianCalendar.YEAR)));
 
-            dates.put("month",  "10");
-            dates.put("day",  "10");
+            dates.put("month",Integer.toString(calendar.get(GregorianCalendar.MONTH)+1));
+            dates.put("day",Integer.toString(calendar.get(GregorianCalendar.DAY_OF_YEAR)));
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         try {
-            boutique.put("lib", Lelib);
+            boutique.put("lib",Lelib);
             boutique.put("datecreation", dates);
-            boutique.put("description", LaDescription);
-            boutique.put("urlimage", "");
+            boutique.put("description",LaDescription);
+            boutique.put("urlimage", "dd");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -92,11 +103,9 @@ public class ajoutBoutique extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         Context context = this.getApplicationContext();
 
-        client.post(context, "http://192.168.43.7/rest_api/web/boutique", params, "application/json",
+        client.post(context, "http://gael.uk.to/restapi/web/boutique", params, "application/json",
                 new AsyncHttpResponseHandler());
         System.out.print(b);
-        description.setText(b.toString());
-        Toast.makeText(getApplicationContext(), "Inscription valide"+b, Toast.LENGTH_LONG).show();
 
     }
-}
+  }

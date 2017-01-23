@@ -84,7 +84,7 @@ public class inscription extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         Context context = this.getApplicationContext();
 
-        client.post(context, "http://192.168.43.7/rest_api/web/utilisateur", params, "application/json",
+        client.post(context, "http://gael.uk.to/restapi/web/utilisateur", params, "application/json",
                 new AsyncHttpResponseHandler());
         Toast.makeText(getApplicationContext(), "Inscription valide", Toast.LENGTH_LONG).show();
         Intent homeIntent = new Intent(getApplicationContext(),MainActivity.class);
