@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Make RESTful webservice call using AsyncHttpClient object
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://gael.uk.to/restapi/web/utilisateurs",new AsyncHttpResponseHandler() {
+        client.get("http://gael.uk.to/restapi/web/app.php/utilisateurs",new AsyncHttpResponseHandler() {
             // When the response returned by REST has Http response code '200'
             @Override
             public void onSuccess(String response) {
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (login.equals(unUtilisateur.getString("login")) || mdp.equals(unUtilisateur.getString("mdp"))) {
 
-                            session.createLoginSession(unUtilisateur.getString("login"),unUtilisateur.getString("mdp"),unUtilisateur.getString("id"));
+                           session.createLoginSession(unUtilisateur.getString("login"),unUtilisateur.getString("mdp"),unUtilisateur.getString("id"));
                             navigatetoHomeActivity();
 
 
@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(homeIntent);
     }
     public void navigatetoInscrition(){
+        //tt
         Intent homeIntent = new Intent(getApplicationContext(),inscription.class);
 
         startActivity(homeIntent);

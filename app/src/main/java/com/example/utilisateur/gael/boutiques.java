@@ -48,7 +48,7 @@ public class boutiques extends AppCompatActivity {
 
         // Make RESTful webservice call using AsyncHttpClient object
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://gael.uk.to/restapi/web/boutiques",new AsyncHttpResponseHandler() {
+        client.get("http://gael.uk.to/restapi/web/app.php/boutiques",new AsyncHttpResponseHandler() {
             // When the response returned by REST has Http response code '200'
             @Override
             public void onSuccess(String response) {

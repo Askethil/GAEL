@@ -21,18 +21,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".inscription"
-            android:label="Inscription" >
+        android:name=".inscription"
+        android:label="inscription" >
+    </activity>
+        <activity
+            android:name=".articleAjout"
+            android:label="articleAjout" >
+
         </activity>
         <activity
             android:name=".boutiques"
-            android:label="Boutiques" >
+            android:label="boutiques" >
+
         </activity>
         <activity
             android:name=".ajoutBoutique"
-            android:label="Ajouter boutique" >
-        </activity>
+            android:label="ajoutBoutique" >
 
+        </activity>
     </application>
 
 </manifest>
