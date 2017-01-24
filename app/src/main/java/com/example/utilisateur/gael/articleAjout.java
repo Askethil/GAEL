@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -15,6 +16,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -28,7 +30,8 @@ import java.util.GregorianCalendar;
  */
 
 public class articleAjout extends AppCompatActivity {
-    EditText nom,description,stock,prix,boutique,image;
+    TextView boutique;
+    EditText nom,description,stock,prix,image;
     Button BtnValider;
 
 
@@ -40,7 +43,7 @@ public class articleAjout extends AppCompatActivity {
         description = (EditText)findViewById(R.id.artDescription);
         stock = (EditText)findViewById(R.id.artStock);
         prix = (EditText)findViewById(R.id.artPrix);
-        boutique = (EditText)findViewById(R.id.artIdBoutique);
+        boutique = (TextView)findViewById(R.id.artIdBoutique);
         image = (EditText)findViewById(R.id.artUrlImage);
         BtnValider= (Button) findViewById(R.id.buttonArtAjout);
         BtnValider.setOnClickListener(new View.OnClickListener() {
@@ -48,29 +51,29 @@ public class articleAjout extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AjoutArticle();
+
+                Intent homeIntent = new Intent(getApplicationContext(),boutiques.class);
+
+                startActivity(homeIntent);
             }
         });
 
 
     }
+
+
     public void AjoutArticle(){
+        Bundle extras = getIntent().getExtras();
+        boutique.setText(extras.getString("idBout"));
 
         final String Lenom = nom.getText().toString();
         final String Ladescription = description.getText().toString();
         final String leStock = stock.getText().toString();
         final String Leprix = prix.getText().toString();
-        final String Laboutique = boutique.getText().toString();
         final String Limage = image.getText().toString();
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy");
-        String Theyear = sdf1.format(c.getTime());
 
-        SimpleDateFormat sdf2 = new SimpleDateFormat("MM");
-        String Themonth = sdf2.format(c.getTime());
-
-        SimpleDateFormat sdf3 = new SimpleDateFormat("dd");
-        String Theday = sdf3.format(c.getTime());
 
         StringEntity entity;
 
@@ -100,7 +103,7 @@ public class articleAjout extends AppCompatActivity {
 
             article.put("stock", leStock);
             article.put("description", Ladescription);
-            article.put("idboutique",Laboutique);
+            article.put("idboutique",extras.getString("idBout"));
             article.put("urlimage", Limage);
             article.put("prix", Leprix);
 
@@ -124,7 +127,7 @@ public class articleAjout extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         Context context = this.getApplicationContext();
 
-        client.post(context, "http://gael.uk.to/restapi/web/app.php/articles", params, "application/json",
+        client.post(context, "http://gael.uk.to/restapi/web/app.php/article", params, "application/json",
                 new AsyncHttpResponseHandler());
         Toast.makeText(getApplicationContext(), "article ajouter", Toast.LENGTH_LONG).show();
         Intent homeIntent = new Intent(getApplicationContext(),articleAjout.class);

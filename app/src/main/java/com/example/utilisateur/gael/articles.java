@@ -32,22 +32,32 @@ public class articles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.article);
         AjouterArticle= (Button) findViewById(R.id.button2);
-        AjouterArticle.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(getApplicationContext(),articleAjout.class);
-                startActivity(homeIntent);
-            }
-        });
+
 
         Bundle extras = getIntent().getExtras();
 
+
         if (extras != null) {
-            String maVar = extras.getString("idBout");
+             String maVar = extras.getString("idBout");
             invokeWS(maVar);
 
         }
+
+        AjouterArticle.setOnClickListener(new View.OnClickListener() {
+
+            Bundle extras = getIntent().getExtras();
+
+
+            @Override
+            public void onClick(View v) {
+                Intent i2 = new Intent(getApplicationContext(), articleAjout.class);
+                i2.putExtra("idBout", extras.getString("idBout"));
+                startActivityForResult(i2, 0);
+            }
+        });
+
+
 
 
 
