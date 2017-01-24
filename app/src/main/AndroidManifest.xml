@@ -30,6 +30,16 @@
 
         </activity>
         <activity
+            android:name=".articles"
+            android:label="articles" >
+
+        </activity>
+        <activity
+            android:name=".articleDetail"
+            android:label="articleDetail" >
+
+        </activity>
+        <activity
             android:name=".boutiques"
             android:label="boutiques" >
 
@@ -39,6 +49,8 @@
             android:label="ajoutBoutique" >
 
         </activity>
+
+
     </application>
 
 </manifest>

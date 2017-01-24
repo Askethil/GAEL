@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (login.equals(unUtilisateur.getString("login")) || mdp.equals(unUtilisateur.getString("mdp"))) {
 
-                           session.createLoginSession(unUtilisateur.getString("login"),unUtilisateur.getString("mdp"),unUtilisateur.getString("id"));
+                          // session.createLoginSession(unUtilisateur.getString("login"),unUtilisateur.getString("mdp"),unUtilisateur.getString("id"));
                             navigatetoHomeActivity();
 
 

@@ -124,7 +124,7 @@ public class articleAjout extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         Context context = this.getApplicationContext();
 
-        client.post(context, "http://192.168.1.73/rest_api/web/article", params, "application/json",
+        client.post(context, "http://gael.uk.to/restapi/web/app.php/articles", params, "application/json",
                 new AsyncHttpResponseHandler());
         Toast.makeText(getApplicationContext(), "article ajouter", Toast.LENGTH_LONG).show();
         Intent homeIntent = new Intent(getApplicationContext(),articleAjout.class);

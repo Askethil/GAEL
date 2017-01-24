@@ -88,7 +88,7 @@ public class boutiques extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                             //on récupère la HashMap contenant les infos de notre item (titre, description, img)
                             HashMap<String, String> map = (HashMap<String, String>) maListViewPerso.getItemAtPosition(position);
-                            Intent i1 = new Intent( boutiques.this, ajoutBoutique.class );
+                            Intent i1 = new Intent( boutiques.this, articles.class );
                             i1.putExtra("idBout",map.get("id") );
                             startActivityForResult(i1, 0);
                         }
